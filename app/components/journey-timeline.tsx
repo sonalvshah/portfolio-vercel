@@ -33,7 +33,6 @@ export function JourneyTimeline() {
           - Intern at UC’s Center for Business Analytics- consulting for a client and working end-to-end on a project. <br />
           - Building <span className="italic">this</span> website. <br />
           - Working on projects in my free time, and, ofcourse trying to get hired. <br />
-          - Working as a Desk Assistant on campus, a great way to meet people and stay organized. <br />
           - Hunting for cute coffee shops, exploring new corners of the states && obsessing over my dog. 
 
 
