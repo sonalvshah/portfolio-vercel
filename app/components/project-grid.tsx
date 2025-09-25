@@ -122,8 +122,6 @@ export function ProjectGrid({ activeCategory = "all" }: ProjectGridProps) {
 
             {/* Project Info */}
             <div className="p-6">
-              <div className="flex items-center justify-between mb-3">
-              </div>
               <h3 className="text-sm font-medium text-gray-900 leading-relaxed line-clamp-3">
                 {project.title}
               </h3>
