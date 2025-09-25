@@ -9,9 +9,7 @@ export function Footer() {
           <div className="flex items-center space-x-4 text-xs text-gray-400">
             <span>© 2025</span>
             <span>•</span>
-            <span>Made with curiosity and coffee</span>
-            <span>•</span>
-            <span>Cincinnati, OH</span>
+            <span>Sonal Shah</span>
           </div>
         </div>
       </div>
