@@ -35,13 +35,13 @@ export function Header() {
     <header className="w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 fixed top-0 left-0 right-0 z-50">
       <div className="max-w-6xl mx-auto px-6">
         <nav className="flex items-center justify-between py-4">
-          {/* Logo/Name */}
+          {/* Logo/Name
           <Link
             href="/"
             className="text-xl font-semibold text-gray-900 tracking-tight"
           >
             Sonal Shah
-          </Link>
+          </Link> */}
 
           {/* Navigation Links */}
           <div className="flex items-center gap-8">
