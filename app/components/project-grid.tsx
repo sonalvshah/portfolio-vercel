@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState, useEffect } from "react"
 
 const projects = [
@@ -63,7 +64,7 @@ const projects = [
   {
     id: 8,
     title: "Applied deep learning techniques for medical image segmentation to accurately detect and map retinal blood vessels, supporting early disease diagnosis.",
-    image: "segmentation-of-retina-vessel.png",
+    image: "/segmentation-of-retina-vessel.png",
     link: "https://github.com/sonalvshah/Predict-The-Segmentation-of-Retina-Blood-Vessel",
     type: "github",
     category: ["all", "machine-learning"],
@@ -96,34 +97,43 @@ export function ProjectGrid({ activeCategory = "all" }: ProjectGridProps) {
   }, [activeCategory])
 
   return (
-    <section className="mb-16">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <section className="mb-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProjects.map((project) => (
           <Link
             key={project.id}
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative block overflow-hidden rounded-xl shadow-md"
+            className="group relative block overflow-hidden rounded-2xl bg-white shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300"
           >
             {/* Project Image */}
-            <div className="aspect-[4/3] overflow-hidden">
-              <img
+            <div className="aspect-[4/3] overflow-hidden relative bg-gray-50">
+              <Image
                 src={project.image || "/placeholder.svg"}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                quality={95}
+                priority={project.id <= 6}
               />
             </div>
 
-            {/* Hover Overlay */}
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center p-4">
-              <h3 className="text-base font-semibold text-white mb-2">
+            {/* Project Info */}
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-3">
+                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
+                  {project.type === "tableau" ? "Tableau" : "GitHub"}
+                </span>
+              </div>
+              <h3 className="text-sm font-medium text-gray-900 leading-relaxed line-clamp-3">
                 {project.title}
               </h3>
-              <span className="text-xs uppercase tracking-wide text-gray-200">
-                {project.type === "tableau" ? "Tableau" : "GitHub"}
-              </span>
             </div>
+
+            {/* Hover Effect */}
+            <div className="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/5 transition-colors duration-300 rounded-2xl" />
           </Link>
         ))}
       </div>

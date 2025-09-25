@@ -3,9 +3,9 @@ import { JourneyTimeline } from "@/app/components/journey-timeline"
 
 export default function AboutPage() {
   return (
-    <main className="pt-24">
+    <div className="min-h-screen bg-white">
       <AboutSection />
-      <JourneyTimeline />  {/* timeline comes right after description + image */}
-    </main>
+      <JourneyTimeline />
+    </div>
   )
 }

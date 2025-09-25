@@ -8,15 +8,21 @@ export function ProjectSection() {
   const [activeCategory, setActiveCategory] = useState("all")
 
   return (
-    <section id = "projects" className="max-w-6xl mx-auto px-6 mt-30">
-      {/* Section Heading */}
-      <h2 className="text-4xl sm:text-4xl font-normal text-gray-900 text-center">
-        A collection of my work
-      </h2>
-    <div className="max-w-6xl mx-auto px-6 mt-10">
-      <CategorySwitcher active={activeCategory} setActive={setActiveCategory} />
-      <ProjectGrid activeCategory={activeCategory} />
-    </div>
+    <section id="projects" className="py-20 bg-white min-h-[800px]">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section Heading */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-light text-gray-900 mb-4 tracking-tight">
+            Selected Work
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            A collection of data analysis, visualization, and machine learning projects
+          </p>
+        </div>
+
+        <CategorySwitcher active={activeCategory} setActive={setActiveCategory} />
+        <ProjectGrid activeCategory={activeCategory} />
+      </div>
     </section>
   )
 }

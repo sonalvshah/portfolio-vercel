@@ -6,13 +6,8 @@ import type React from "react"
 export default function MainWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
 
-  // Default padding
-  let mainPadding = "pt-20"
-
-  // Smaller padding on About page
-  if (pathname === "/about") {
-    mainPadding = "pt-5"
-  }
+  // Consistent padding for all pages
+  const mainPadding = pathname === "/about" ? "pt-20 flex-1" : "pt-16 flex-1"
 
   return <main className={mainPadding}>{children}</main>
 }
