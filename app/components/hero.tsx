@@ -3,16 +3,24 @@
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Subtle, elegant gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-slate-50 to-gray-100">
-        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent"></div>
+      {/* More visible pastel gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-rose-100 via-pink-100 to-orange-100">
+        <div className="absolute inset-0 bg-gradient-to-bl from-blue-100/80 via-purple-100/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/5 to-transparent"></div>
       </div>
       
-      {/* Minimal geometric accent */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-gray-200/30 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-slate-200/40 to-transparent rounded-full blur-3xl"></div>
+      {/* Enhanced pastel accent elements */}
+      <div className="absolute inset-0 opacity-50">
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-bl from-pink-300/60 via-rose-300/40 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-gradient-to-tr from-blue-300/60 via-purple-300/40 to-transparent rounded-full blur-3xl"></div>
+        
+        {/* Diagonal gradient streak */}
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-orange-200/30 to-transparent transform rotate-12 translate-x-1/4 translate-y-1/4 w-full h-full blur-xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-yellow-200/25 to-transparent transform -rotate-12 -translate-x-1/4 -translate-y-1/4 w-full h-full blur-xl"></div>
       </div>
+      
+      {/* Smooth fade to white at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         {/* Clean, professional intro */}

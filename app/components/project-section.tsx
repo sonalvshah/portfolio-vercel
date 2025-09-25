@@ -8,7 +8,7 @@ export function ProjectSection() {
   const [activeCategory, setActiveCategory] = useState("all")
 
   return (
-    <section id="projects" className="py-20 bg-white min-h-[800px]">
+    <section id="projects" className="py-20 bg-white min-h-[800px] relative">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Heading */}
         <div className="text-center mb-16">
