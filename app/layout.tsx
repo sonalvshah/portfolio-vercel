@@ -1,40 +1,25 @@
 import type React from "react"
 import { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
-import { Inter, Source_Sans_3, Lexend_Tera } from "next/font/google"
-import { Work_Sans, Playfair_Display } from "next/font/google";
+import { Inter } from "next/font/google"
 import "./globals.css"
 import { Footer } from "./components/footer"
 import { Header } from "./components/header"
 import MainWrapper from "./main-wrapper"
 
 export const metadata: Metadata = {
-  title: "Sonal's Portfolio",
-  description: "Analytics Portfolio by Sonal Shah",
-  generator: "v0.app",
+  title: "Sonal Shah",
+  description: "Data analyst and storyteller transforming complex data into clear insights through visualization, analysis, and machine learning.",
+  keywords: "data analysis, data visualization, machine learning, tableau, python, analytics",
+  authors: [{ name: "Sonal Shah" }],
+  creator: "Sonal Shah",
 }
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-inter",
+  display: "swap",
 })
-
-const sourceSans = Source_Sans_3({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-sourcesans",
-})
-
-const lexendTera = Lexend_Tera({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-lexendtera",
-})
-
-const workSans = Work_Sans({ subsets: ["latin"], variable: "--font-worksans" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 export default function RootLayout({
   children,
@@ -42,10 +27,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} ${sourceSans.variable} ${lexendTera.variable} ${workSans.variable} ${playfair.variable} font-sans`}
-      >
+    <html lang="en" className={inter.variable}>
+      <body className="font-inter antialiased text-gray-900 bg-white min-h-screen flex flex-col">
         <Header />
         <MainWrapper>{children}</MainWrapper>
         <Footer />

@@ -1,36 +1,52 @@
-"use client";
+"use client"
 
 export function Hero() {
   return (
-    <section
-      className="relative w-screen min-h-screen flex items-center justify-center text-center px-4 sm:px-6 md:px-8 bg-cover bg-center overflow-hidden ml-[calc(50%-50vw)] mr-[calc(50%-50vw)]"
-      style={{
-        backgroundImage: "url('/hero.png')", // replace with your image path
-      }}
-    >
-      <div className="relative max-w-3xl mx-auto">
-        {/* Big Intro */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl leading-tight font-worksans text-gray-900 uppercase">
-          SONAL SHAH 
-        </h1>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* More visible pastel gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-rose-100 via-pink-100 to-orange-100">
+        <div className="absolute inset-0 bg-gradient-to-bl from-blue-100/80 via-purple-100/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/5 to-transparent"></div>
+      </div>
+      
+      {/* Enhanced pastel accent elements */}
+      <div className="absolute inset-0 opacity-50">
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-bl from-pink-300/60 via-rose-300/40 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-gradient-to-tr from-blue-300/60 via-purple-300/40 to-transparent rounded-full blur-3xl"></div>
+        
+        {/* Diagonal gradient streak */}
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-orange-200/30 to-transparent transform rotate-12 translate-x-1/4 translate-y-1/4 w-full h-full blur-xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-yellow-200/25 to-transparent transform -rotate-12 -translate-x-1/4 -translate-y-1/4 w-full h-full blur-xl"></div>
+      </div>
+      
+      {/* Smooth fade to white at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
 
-        {/* Supporting line */}
-        <p className="mt-6 text-lg text-gray-700 leading-relaxed">
-          Welcome! I built this portfolio to show how I explore data, build things <br /> 
-          with it and share whatever experiments I’m trying out. 
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        {/* Clean, professional intro */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 mb-6 tracking-tight">
+          Sonal Shah
+        </h1>
+        
+        <p className="text-lg sm:text-xl text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed">
+          I work with data to find patterns and build models.<br />
+          Then create visualizations that actually make sense to people.
         </p>
 
-        {/* Button to scroll to Projects */}
+        {/* Clean CTA button */}
         <button
           onClick={() => {
-            const projectsSection = document.getElementById("projects");
-            projectsSection?.scrollIntoView({ behavior: "smooth" });
+            const projectsSection = document.getElementById("projects")
+            projectsSection?.scrollIntoView({ behavior: "smooth" })
           }}
-          className="mt-6 px-6 py-3 [#fff3dd] text-black border border-gray-800 rounded-lg hover:bg-black hover:text-white transition"
+          className="inline-flex items-center px-8 py-4 text-sm font-medium text-white bg-gradient-to-r from-gray-900 to-gray-800 rounded-xl hover:from-gray-800 hover:to-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
         >
-          Dive in ↓
+          View My Work
+          <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
         </button>
       </div>
     </section>
-  );
+  )
 }
