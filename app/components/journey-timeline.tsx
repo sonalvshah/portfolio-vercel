@@ -3,7 +3,7 @@
 export function JourneyTimeline() {
   const currentActivities = [
     {
-      title: "Data Analytics Intern",
+      title: "Analytics & AI Intern",
       description: "UC's Center for Business Analytics - consulting for a client and working end-to-end on a project"
     },
     {
@@ -12,7 +12,7 @@ export function JourneyTimeline() {
     },
     {
       title: "Personal Projects",
-      description: "Working on data science projects in my free time while actively seeking new opportunities"
+      description: "Working on projects in my free time while actively seeking new opportunities"
     },
     {
       title: "Life Outside Data",
