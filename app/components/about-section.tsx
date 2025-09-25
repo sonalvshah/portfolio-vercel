@@ -22,7 +22,7 @@ export function AboutSection() {
       A bit on me
     </h2>
     <p className="text-gray-600 text-lg leading-relaxed mb-8">
-      Hi, I'm Sonal. I'm currently pursuing my Master's in Computer Science at University of Cincinnati 
+      I'm currently pursuing my Master's in Computer Science at University of Cincinnati 
       and interning at UC's Center for Business Analytics, where I work with a client on business challenges 
       and turn data into insights. I'd say I'm a data analyst by role, but I lean deeply into data science 
       because I enjoy building and experimenting beyond just reports.
