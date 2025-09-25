@@ -8,8 +8,6 @@ export function Footer() {
           {/* Copyright */}
           <div className="flex items-center space-x-4 text-xs text-gray-400">
             <span>© 2025</span>
-            <span>•</span>
-            <span>Sonal Shah</span>
           </div>
         </div>
       </div>
