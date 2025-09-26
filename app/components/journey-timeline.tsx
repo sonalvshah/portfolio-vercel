@@ -3,19 +3,19 @@
 export function JourneyTimeline() {
   const currentActivities = [
     {
-      title: "analytics & AI intern",
+      title: "Analytics & AI intern",
       description: "UC's Center for Business Analytics - consulting for a client and working end-to-end on a project"
     },
     {
-      title: "building this portfolio",
+      title: "Building this portfolio",
       description: "Designing and developing this website to showcase my data analysis journey"
     },
     {
-      title: "personal projects",
+      title: "Personal projects",
       description: "Working on projects in my free time while actively seeking new opportunities"
     },
     {
-      title: "life outside data",
+      title: "Life outside data",
       description: "Hunting for cute coffee shops, exploring new corners of the states & obsessing over my dog"
     }
   ]
@@ -25,7 +25,7 @@ export function JourneyTimeline() {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-light text-gray-900 mb-4 tracking-tight">
-            what I'm up to
+            What I'm up to
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Currently balancing analytics work, personal projects, and life's simple pleasures
