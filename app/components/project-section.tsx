@@ -13,7 +13,7 @@ export function ProjectSection() {
         {/* Section Heading */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-light text-gray-900 mb-4 tracking-tight">
-            A collection of my work
+            a collection of my work
           </h2>
           {/*<p className="text-gray-600 max-w-2xl mx-auto">
             A collection of data analysis, visualization, and machine learning projects
