@@ -1,3 +1,4 @@
+// trigger redeploy
 "use client"
 import { Hero } from "@/app/components/hero"
 import { ProjectSection } from "@/app/components/project-section"
