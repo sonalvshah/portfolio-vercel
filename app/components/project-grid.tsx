@@ -1,14 +1,12 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import Link from "next/link"
-import Image from "next/image"
+import { useState, useEffect } from "react"
 
 const projects = [
   {
     id: 1,
     title: "Built an interactive Tableau dashboard to visualize portfolio performance, identify risk factors, and support data-driven investment insights.",
-    // NOTE: Replace these with placeholder images as external image links may not work in this environment.
     image: "/bank-loan-insights.png",
     link: "https://public.tableau.com/app/profile/shahsv/viz/BankLoanInsightsDashboard/SUMMARY",
     type: "tableau",
@@ -27,7 +25,7 @@ const projects = [
     title: "Cleaned and transformed sales data using SQL, then developed Tableau dashboards to highlight key trends and performance metrics.",
     image: "/automotive-sales-trends-with-time-series-and-bar-c.png",
     link: "https://public.tableau.com/app/profile/shahsv/viz/CarSalesAnalysis_17421586078730/Dashboard1",
-    type: "tableau",
+    type: "medium",
     category: ["all", "tableau", "data-analysis"],
   },
   {
@@ -65,7 +63,7 @@ const projects = [
   {
     id: 8,
     title: "Applied deep learning techniques for medical image segmentation to accurately detect and map retinal blood vessels, supporting early disease diagnosis.",
-    image: "/segmentation-of-retina-vessel.png",
+    image: "segmentation-of-retina-vessel.png",
     link: "https://github.com/sonalvshah/Predict-The-Segmentation-of-Retina-Blood-Vessel",
     type: "github",
     category: ["all", "machine-learning"],
@@ -80,6 +78,9 @@ const projects = [
   },
 ]
 
+interface ProjectGridProps {
+  activeCategory?: string
+}
 
 export function ProjectGrid({ activeCategory = "all" }: ProjectGridProps) {
   const [filteredProjects, setFilteredProjects] = useState(projects)
@@ -95,66 +96,38 @@ export function ProjectGrid({ activeCategory = "all" }: ProjectGridProps) {
   }, [activeCategory])
 
   return (
-    <section className="mb-20">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section className="mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredProjects.map((project) => (
           <Link
             key={project.id}
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative block overflow-hidden rounded-2xl bg-white shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300"
+            className="group relative block overflow-hidden rounded-xl shadow-md"
           >
             {/* Project Image */}
-            <div className="aspect-[4/3] overflow-hidden relative bg-gray-50">
-              <Image
+            <div className="aspect-[4/3] overflow-hidden">
+              <img
                 src={project.image || "/placeholder.svg"}
                 alt={project.title}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-                quality={95}
-                priority={project.id <= 6}
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
 
-              {/* Project Info */}
-              <div className="p-6 pb-20">
-                <h3 className="text-base font-semibold text-gray-900 leading-relaxed line-clamp-3">
-                  {project.title}
-                </h3>
-                <p className="mt-2 text-sm text-gray-800 font-medium capitalize">
-                  {project.type.split('-').join(' ')} Project
-                </p>
-              </div>
+            {/* Hover Overlay */}
+            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center p-4">
+              <h3 className="text-sm font-semibold text-white mb-2">
+                {project.title}
+              </h3>
+              <span className="text-xs uppercase tracking-wide text-gray-200">
+              {project.type === "tableau" ? "Tableau" : project.type === "github" ? "GitHub" : "Medium"}
 
-              {/* Circular Arrow Button Element */}
-              <div className="absolute bottom-6 right-6 z-20">
-                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white shadow-xl transition-all duration-300 transform group-hover:scale-110 group-hover:shadow-gray-800 hover:bg">
-                  {/* Right Arrow Icon (Inline SVG) */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2.5}
-                    stroke="currentColor"
-                    className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-0.5"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                    />
-                  </svg>
-                </div>
-              </div>
-
-              {/* Hover Overlay Effect */}
-              <div className="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/5 transition-colors duration-300 rounded-2xl" />
-            </a>
-          ))}
-        </div>
-      </section>
-    </div>
+              </span>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
   )
 }
