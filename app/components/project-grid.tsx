@@ -132,14 +132,14 @@ export default function App({ activeCategory = "all" }: ProjectGridProps) {
                 <h3 className="text-base font-semibold text-gray-900 leading-relaxed line-clamp-3">
                   {project.title}
                 </h3>
-                <p className="mt-2 text-sm text-indigo-600 font-medium capitalize">
+                <p className="mt-2 text-sm text-grey-700 font-medium capitalize">
                   {project.type.split('-').join(' ')} Project
                 </p>
               </div>
 
               {/* Circular Arrow Button Element */}
               <div className="absolute bottom-6 right-6 z-20">
-                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-600 text-white shadow-xl transition-all duration-300 transform group-hover:scale-110 group-hover:shadow-indigo-500/50 hover:bg-indigo-700">
+                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-black-900 text-white shadow-xl transition-all duration-300 transform group-hover:scale-110 group-hover:shadow-black-500/50 hover:bg-black-700">
                   {/* Right Arrow Icon (Inline SVG) */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
