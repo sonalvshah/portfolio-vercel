@@ -85,7 +85,7 @@ interface ProjectGridProps {
 }
 
 // Main component, must be named App for single file structure
-export default function App({ activeCategory = "all" }: ProjectGridProps) {
+export function ProjectGrid({ activeCategory = "all" }: ProjectGridProps) {
   const [filteredProjects, setFilteredProjects] = useState(projects)
 
   useEffect(() => {
