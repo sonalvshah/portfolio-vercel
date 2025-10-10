@@ -1,15 +1,15 @@
 "use client"
 
 import { useState, useEffect } from "react"
-// Note: next/link and next/image have been replaced with standard <a> and <img> tags
-// to ensure the component compiles correctly outside of a Next.js environment.
+import Link from "next/link"
+import Image from "next/image"
 
 const projects = [
   {
     id: 1,
     title: "Built an interactive Tableau dashboard to visualize portfolio performance, identify risk factors, and support data-driven investment insights.",
     // NOTE: Replace these with placeholder images as external image links may not work in this environment.
-    image: "https://placehold.co/600x450/d3f0f7/0369a1?text=Tableau+Dashboard+1",
+    image: "/bank-loan-insights.png",
     link: "https://public.tableau.com/app/profile/shahsv/viz/BankLoanInsightsDashboard/SUMMARY",
     type: "tableau",
     category: ["all", "tableau"],
@@ -17,7 +17,7 @@ const projects = [
   {
     id: 2,
     title: "Performed EDA and built an interactive Tableau dashboard to visualize sales trends, customer segments, and profit drivers.",
-    image: "https://placehold.co/600x450/f7e8d3/a16903?text=Tableau+Dashboard+2",
+    image: "/superstore-sales.png",
     link: "https://public.tableau.com/app/profile/shahsv/viz/SuperstoreSales_17513257030340/Dashboard1",
     type: "tableau",
     category: ["all", "tableau"],
@@ -25,7 +25,7 @@ const projects = [
   {
     id: 3,
     title: "Cleaned and transformed sales data using SQL, then developed Tableau dashboards to highlight key trends and performance metrics.",
-    image: "https://placehold.co/600x450/e0d3f7/6d03a1?text=Car+Sales+Analysis",
+    image: "/automotive-sales-trends-with-time-series-and-bar-c.png",
     link: "https://public.tableau.com/app/profile/shahsv/viz/CarSalesAnalysis_17421586078730/Dashboard1",
     type: "tableau",
     category: ["all", "tableau", "data-analysis"],
@@ -33,7 +33,7 @@ const projects = [
   {
     id: 4,
     title: "Utilized Databricks for data cleaning, exploration, and visualization to uncover trends and insights on pandemic impact.",
-    image: "https://placehold.co/600x450/d3f7e0/03a16d?text=COVID+Analysis",
+    image: "/covid-data-analysis-dashboard-with-geographic-heat.png",
     link: "https://github.com/sonalvshah/Exploring-COVID-19-Data-using-Databricks",
     type: "github",
     category: ["all", "data-analysis"],
@@ -41,7 +41,7 @@ const projects = [
   {
     id: 5,
     title: "Applied Graph Convolutional Networks to classify enzymes based on structural and functional properties, improving predictive accuracy with deep learning techniques.",
-    image: "https://placehold.co/600x450/f7d3e0/a1036d?text=Enzyme+Classification+(GCN)",
+    image: "/machine-learning-neural-network-visualization-with.png",
     link: "https://github.com/sonalvshah/Classification-of-Enzymes-using-GCN",
     type: "github",
     category: ["all", "machine-learning"],
@@ -49,7 +49,7 @@ const projects = [
   {
     id: 6,
     title: "Research project using the RarePlanes dataset to evaluate object detection models and assess the impact of synthetic data.",
-    image: "https://placehold.co/600x450/e8f7d3/6da103?text=Object+Detection+Research",
+    image: "/computer-vision-object-detection-with-bounding-box.png",
     link: "https://github.com/sonalvshah/Sensitivity-of-Object-Detection-Models-to-Synthetic-Training-Data-",
     type: "github",
     category: ["all", "machine-learning"],
@@ -57,7 +57,7 @@ const projects = [
   {
     id: 7,
     title: "Developed deep learning models to predict cancer mortality rates from health datasets, uncovering key patterns and risk factors.",
-    image: "https://placehold.co/600x450/d3e0f7/036da1?text=Cancer+Mortality+Prediction",
+    image: "/medical-data-analysis-with-predictive-modeling-cha.png",
     link: "https://github.com/sonalvshah/Prediction-of-Cancer-Morality-Rates",
     type: "github",
     category: ["all", "machine-learning"],
@@ -65,7 +65,7 @@ const projects = [
   {
     id: 8,
     title: "Applied deep learning techniques for medical image segmentation to accurately detect and map retinal blood vessels, supporting early disease diagnosis.",
-    image: "https://placehold.co/600x450/f7d3d3/a10303?text=Retina+Vessel+Segmentation",
+    image: "/segmentation-of-retina-vessel.png",
     link: "https://github.com/sonalvshah/Predict-The-Segmentation-of-Retina-Blood-Vessel",
     type: "github",
     category: ["all", "machine-learning"],
@@ -73,18 +73,14 @@ const projects = [
   {
     id: 9,
     title: "Implemented deep learning models on the MNIST dataset to accurately classify digits (0–9) with high accuracy.",
-    image: "https://placehold.co/600x450/e0f7d3/6da103?text=MNIST+Digit+Recognition",
+    image: "/handwritten-digit-recognition-neural-network-with-.png",
     link: "https://github.com/sonalvshah/Prediction-of-Handwritten-Digital-Numbers-Between-0-9",
     type: "github",
     category: ["all", "machine-learning"],
   },
 ]
 
-interface ProjectGridProps {
-  activeCategory?: string
-}
 
-// Main component, must be named App for single file structure
 export function ProjectGrid({ activeCategory = "all" }: ProjectGridProps) {
   const [filteredProjects, setFilteredProjects] = useState(projects)
 
@@ -99,33 +95,28 @@ export function ProjectGrid({ activeCategory = "all" }: ProjectGridProps) {
   }, [activeCategory])
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 sm:p-8 font-inter">
-      <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-8 text-center">
-        My Portfolio Projects
-      </h1>
-      <section className="mb-20 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <a // Replaced Next/Link with standard <a> tag
-              key={project.id}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative block overflow-hidden rounded-2xl bg-white shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 ease-out focus:ring-4 focus:ring-indigo-500/50"
-            >
-              {/* Project Image */}
-              <div className="aspect-[4/3] overflow-hidden relative bg-gray-50">
-                <img // Replaced Next/Image with standard <img> tag
-                  src={project.image}
-                  alt={project.title}
-                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = "https://placehold.co/600x450/eeeeee/333333?text=Image+Unavailable";
-                  }}
-                />
-              </div>
+    <section className="mb-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredProjects.map((project) => (
+          <Link
+            key={project.id}
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative block overflow-hidden rounded-2xl bg-white shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300"
+          >
+            {/* Project Image */}
+            <div className="aspect-[4/3] overflow-hidden relative bg-gray-50">
+              <Image
+                src={project.image || "/placeholder.svg"}
+                alt={project.title}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                quality={95}
+                priority={project.id <= 6}
+              />
+            </div>
 
               {/* Project Info */}
               <div className="p-6 pb-20">
