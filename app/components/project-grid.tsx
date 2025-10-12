@@ -85,49 +85,63 @@ interface ProjectGridProps {
 export function ProjectGrid({ activeCategory = "all" }: ProjectGridProps) {
   const [filteredProjects, setFilteredProjects] = useState(projects)
 
-  useEffect(() => {
-    if (activeCategory === "all") {
-      setFilteredProjects(projects)
-    } else {
-      setFilteredProjects(
-        projects.filter((project) => project.category.includes(activeCategory))
-      )
-    }
-  }, [activeCategory])
+useEffect(() => {
+    if (activeCategory === "all") {
+      setFilteredProjects(projects)
+    } else {
+      setFilteredProjects(
+        projects.filter((project) => project.category.includes(activeCategory))
+      )
+    }
+  }, [activeCategory])
 
-  return (
-    <section className="mb-16">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredProjects.map((project) => (
-          <Link
-            key={project.id}
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative block overflow-hidden rounded-xl shadow-md"
-          >
-            {/* Project Image */}
-            <div className="aspect-[4/3] overflow-hidden">
-              <img
-                src={project.image || "/placeholder.svg"}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </div>
+  return (
+    <section className="mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {filteredProjects.map((project) => (
+          <Link
+            key={project.id}
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block overflow-hidden rounded-xl shadow-lg bg-white border border-gray-100 transition-shadow duration-300 hover:shadow-xl"
+          >
+            {/* Project Image */}
+            <div className="aspect-[4/3] overflow-hidden">
+              <img
+                src={project.image || "/placeholder.svg"}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
 
-            {/* Hover Overlay */}
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center p-4">
-              <h3 className="text-sm font-semibold text-white mb-2">
-                {project.title}
-              </h3>
-              <span className="text-xs uppercase tracking-wide text-gray-200">
-              {project.type === "tableau" ? "Tableau" : project.type === "github" ? "GitHub" : "Medium"}
+            {/* Card Content (Below Image) */}
+            <div className="p-4 flex items-start justify-between">
+              <div className="pr-4">
+                <h3 className="text-base font-medium text-gray-900 line-clamp-3 mb-1">
+                  {project.title}
+                </h3>
+                <p className="text-xs uppercase tracking-wider text-gray-500">
+                  {project.type === "tableau" ? "Tableau" : project.type === "github" ? "GitHub" : "Medium"}
+                </p>
+              </div>
 
-              </span>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </section>
-  )
+              {/* Circle Button with Right Arrow */}
+              <div className="flex-shrink-0 mt-1">
+                <button
+                  // Button is inside the Link, so the Link handles navigation.
+                  // Adding pointer-events-none prevents double-click/double-tap issues, 
+                  // but still visually represents the action.
+                  className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-900 text-white transition-transform duration-300 group-hover:bg-pink-600 group-hover:translate-x-1"
+                  aria-label={`View project: ${project.title}`}
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
+  )
 }
